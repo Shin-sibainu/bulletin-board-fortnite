@@ -184,8 +184,11 @@ table {
 }
 
 .thread #threadContent {
-  margin-right: 20px;
   color: black;
+}
+
+.thread #threadContentArea {
+  margin-left: 20px;
 }
 
 .threadComment {
