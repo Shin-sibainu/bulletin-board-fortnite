@@ -81,6 +81,12 @@ th, td {
   border: 1px solid #808080;
   background: #fff;
   padding: 18px;
+  text-align: center;
+}
+
+.postBox span {
+  font-weight: 600;
+  padding: 3px;
 }
 
 .postArea {
@@ -121,5 +127,60 @@ table {
     float: right;
     margin-top: 2px;
   }
+}
+
+.threadArea {
+  width: 92%;
+  margin: 1.2em auto;
+}
+
+.thread {
+  margin-top: 20px;
+  width: 90%;
+  background-color: #fff;
+  border-radius: 6px;
+  -webkit-box-shadow: 0px 1px 10px #666;
+          box-shadow: 0px 1px 10px #666;
+  border: 1px solid #808080;
+  background: #fff;
+  padding: 14px;
+}
+
+.thread strong {
+  color: #f52525;
+  font-size: 150%;
+}
+
+.thread p {
+  overflow-wrap: break-word;
+  font-size: 110%;
+  -webkit-margin-before: 0.7em;
+          margin-block-start: 0.7em;
+  -webkit-margin-after: 1.8em;
+          margin-block-end: 1.8em;
+}
+
+.thread span {
+  color: #008000;
+  margin-right: 5px;
+}
+
+.thread a {
+  margin-left: 5px;
+}
+
+.thread b {
+  margin-right: 5px;
+}
+
+.threadComment {
+  padding: 10px 10px 10px 0;
+}
+
+.threadInfo {
+  overflow-wrap: break-word;
+  width: 100%;
+  text-align: right;
+  margin: 1px;
 }
 /*# sourceMappingURL=style.css.map */

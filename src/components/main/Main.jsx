@@ -1,14 +1,14 @@
 import React from "react";
 import { TopButtons } from "./button/TopButtons";
-import { PostArea } from "./post/PostArea";
-import { ThreadArea } from "./ThreadArea";
+import { NewPostThread } from "./post/NewPostTread";
+import { ThreadArea } from "./thread/ThreadArea";
 
 export const Main = () => {
   return (
     <div>
       <TopButtons />
-      <PostArea />
       <ThreadArea />
+      <NewPostThread />
     </div>
   );
 };

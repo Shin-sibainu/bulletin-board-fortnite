@@ -2,6 +2,7 @@ html {
     background: #E1F0F0;
 }
 
+//------header--------//
 header {
     text-align: center;
     padding: 2px 6px;
@@ -14,6 +15,7 @@ header {
     font-weight: 600;
 }
 
+//-----topbuttonarea--------//
 .topButtonsArea {
     padding: 18px 18px;
     display: flex;
@@ -75,6 +77,11 @@ th, td {
     border: 1px solid #808080;
     background: #fff;
     padding: 18px;
+    text-align: center;        
+    span {
+        font-weight: 600;
+        padding: 3px;
+    }
 }
 
 .postArea {
@@ -121,4 +128,55 @@ th, td {
     margin-top: 2px;
 }
 }
-//------postArea---------//
+
+//------threadArea---------//
+.threadArea {
+    width: 92%;
+    margin: 1.2em auto;    
+}
+
+
+.thread {
+    margin-top: 20px;
+    width: 90%;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 1px 10px #666;
+    border: 1px solid #808080;
+    background: #fff;
+    padding: 14px;
+
+    strong {
+        color: #f52525;
+        font-size: 150%;
+    }
+    p{
+        overflow-wrap: break-word;
+        font-size: 110%;
+        margin-block-start: 0.7em;
+        margin-block-end: 1.8em;
+    }
+    span{
+        color: #008000;
+        margin-right: 5px;
+    }
+    a{
+        margin-left: 5px;
+    }
+    b{
+        margin-right: 5px;
+    }
+}
+
+.threadComment {
+    padding: 10px 10px 10px 0;
+}
+
+.threadInfo {
+    overflow-wrap: break-word;
+    width: 100%;
+    text-align: right;
+    margin: 1px;
+}
+
+
