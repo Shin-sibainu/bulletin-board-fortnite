@@ -1,21 +1,35 @@
 import React, { useState } from "react";
 
-export const NewPostThread = () => {
-  const [threadList, setThreadList] = useState([]);
+export const NewPostThread = ({ threadList, setThreadList }) => {
   const [inputName, setInputName] = useState("");
   const [inputTitle, setInputTitle] = useState("");
   const [inputComment, setInputComment] = useState("");
 
+  const newThreadFormVailed = () => {
+    if (
+      inputName.length !== 0 &&
+      inputTitle.length !== 0 &&
+      inputComment.length !== 0
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    /* 新規スレッド立ち上げ */
-    setThreadList([
-      ...threadList,
-      { name: inputName, title: inputTitle, comment: inputComment },
-    ]);
-    setInputName("");
-    setInputTitle("");
-    setInputComment("");
+    if (newThreadFormVailed()) {
+      console.log("new thread");
+      /* 新規スレッド立ち上げ */
+      setThreadList([
+        ...threadList,
+        { name: inputName, title: inputTitle, comment: inputComment },
+      ]);
+      setInputName("");
+      setInputTitle("");
+      setInputComment("");
+    }
   };
 
   const handleNameChange = (e) => {
@@ -48,6 +62,7 @@ export const NewPostThread = () => {
                       name="name"
                       maxLength="12"
                       className="nameInput"
+                      value={inputName}
                     />
                   </td>
                 </tr>
@@ -60,6 +75,7 @@ export const NewPostThread = () => {
                       name="sub"
                       maxLength="12"
                       className="titleInput"
+                      value={inputTitle}
                     />
                   </td>
                 </tr>
@@ -71,6 +87,7 @@ export const NewPostThread = () => {
                       name="comment"
                       className="textArea"
                       onChange={handleCommentChange}
+                      value={inputComment}
                     ></textarea>
                     {/*   <input
                       type="submit"

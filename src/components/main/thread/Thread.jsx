@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const Thread = () => {
+export const Thread = ({ thread, index }) => {
   const [inputName, setInputName] = useState("");
   const [inputTextArea, setInputTextArea] = useState("");
   const [replyList, setReplyList] = useState([]);
@@ -14,8 +14,6 @@ export const Thread = () => {
   };
 
   const formVailed = () => {
-    /* 名前とテキストエリアに文字が１文字であればtrueを返す。
-    それ以外はfalseとエラー文を配列に格納する。 */
     if (inputName.length !== 0 && inputTextArea.length !== 0) {
       return true;
     } else {
@@ -40,12 +38,12 @@ export const Thread = () => {
   return (
     <div className="thread">
       <strong>
-        <span id="threadnumber">No.1:</span>
-        PC勢FPS値高いから撃ち負けるんだがwww
+        <span id="threadnumber">No{index + 1}:</span>
+        {thread.title}
       </strong>
       <div className="threadComment">
         <p id="username">
-          No.1 名前: <b> ShinCode</b>
+          No.1 名前: <b> {thread.name}</b>
           <span className="threadInfo">
             2021/08/26(木)14:29
             <a href="http://shincode.info">[返信]</a>
@@ -53,12 +51,7 @@ export const Thread = () => {
         </p>
         <p id="threadContentArea">
           {/* ここから返信コメントを複数生成 */}
-          <span id="threadContent">
-            PS4勢涙目。こっちが上手くても壁張かえられるから絶対に負けるくそげーすぎるwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-            PS4勢涙目。こっちが上手くても壁張かえられるから絶対に負けるくそげーすぎる
-            PS4勢涙目。こっちが上手くても壁張かえられるから絶対に負けるくそげーすぎる
-            PS4勢涙目。こっちが上手くても壁張かえられるから絶対に負けるくそげーすぎる
-          </span>
+          <span id="threadContent">{thread.comment}</span>
         </p>
         {replyList.map((reply, index) => (
           <div key={index}>
