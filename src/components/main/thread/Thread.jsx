@@ -3,6 +3,7 @@ import React, { useState } from "react";
 export const Thread = () => {
   const [inputName, setInputName] = useState("");
   const [inputTextArea, setInputTextArea] = useState("");
+  const [replyList, setReplyList] = useState([]);
 
   const handleChange = (e) => {
     setInputName(e.target.value);
@@ -25,11 +26,14 @@ export const Thread = () => {
     e.preventDefault();
     if (formVailed()) {
       /* データベースに入力したデータを送る */
-      setInputName(inputName);
-      console.log(inputName);
-      setInputTextArea(inputTextArea);
-      console.log(inputTextArea);
       console.log("submit");
+      /* スレ下に返信コメントを追加 */
+      setReplyList([
+        ...replyList,
+        { name: inputName, replyComment: inputTextArea },
+      ]);
+      setInputName("");
+      setInputTextArea("");
     }
   };
 
@@ -44,10 +48,11 @@ export const Thread = () => {
           No.1 名前: <b> ShinCode</b>
           <span className="threadInfo">
             2021/08/26(木)14:29
-            <a href="#">[返信]</a>
+            <a href="http://shincode.info">[返信]</a>
           </span>
         </p>
         <p id="threadContentArea">
+          {/* ここから返信コメントを複数生成 */}
           <span id="threadContent">
             PS4勢涙目。こっちが上手くても壁張かえられるから絶対に負けるくそげーすぎるwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
             PS4勢涙目。こっちが上手くても壁張かえられるから絶対に負けるくそげーすぎる
@@ -55,6 +60,21 @@ export const Thread = () => {
             PS4勢涙目。こっちが上手くても壁張かえられるから絶対に負けるくそげーすぎる
           </span>
         </p>
+        {replyList.map((reply, index) => (
+          <div key={index}>
+            <p id="username">
+              No.{index + 2} 名前: <b> {reply.name}</b>
+              <span className="threadInfo">
+                2021/08/26(木)14:29
+                <a href="http://shincode.info">[返信]</a>
+              </span>
+            </p>
+            <p id="threadContentArea">
+              {/* ここから返信コメントを複数生成 */}
+              <span id="threadContent">{reply.replyComment}</span>
+            </p>
+          </div>
+        ))}
       </div>
       {/* 返信用 */}
       {/* method="POST"にしないと無理な気がする*/}
