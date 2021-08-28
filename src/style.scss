@@ -205,10 +205,16 @@ th, td {
 
 .paginateContainer {
     display: flex;
+    justify-content: flex-start;
+    margin-left: 2.2em;
 }
 
 .pageItem {
     cursor: pointer;
+    padding: 1px 5px;
+    a{
+        color: #3B5998;
+    }
 }
 
 .active {

@@ -36,7 +36,7 @@ export const Thread = ({ thread, index }) => {
   };
 
   return (
-    <div className="thread">
+    <div className="thread" key={index}>
       <strong>
         <span id="threadnumber">No{index + 1}:</span>
         {thread.title}

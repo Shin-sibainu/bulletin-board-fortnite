@@ -215,10 +215,19 @@ table {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-left: 2.2em;
 }
 
 .pageItem {
   cursor: pointer;
+  padding: 1px 5px;
+}
+
+.pageItem a {
+  color: #3B5998;
 }
 
 .active {
