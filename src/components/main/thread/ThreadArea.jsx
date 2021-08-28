@@ -1,13 +1,13 @@
 import React from "react";
 import { Thread } from "./Thread";
 
-export const ThreadArea = ({ threadList }) => {
+export const ThreadArea = ({ threadList, offset, perPage }) => {
   return (
     <div className="threadArea">
-      {/* mapでTread数に応じて出力したい。１ページ最大１０レスまで。超えたらページネーション */}
-      {threadList.map((thread, index) => (
-        <Thread thread={thread} index={index} key={index} />
-      ))}
+      {/* mapでTread数に応じて出力したい。１ページ最大7レスまで。超えたらページネーション */}
+      {threadList.slice(offset, offset + perPage).map((thread, index) => {
+        return <Thread thread={thread} index={index} key={index} />;
+      })}
     </div>
   );
 };

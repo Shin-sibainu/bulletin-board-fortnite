@@ -207,4 +207,12 @@ th, td {
     display: flex;
 }
 
+.pageItem {
+    cursor: pointer;
+}
+
+.active {
+    cursor: default;
+}
+
 

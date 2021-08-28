@@ -216,4 +216,12 @@ table {
   display: -ms-flexbox;
   display: flex;
 }
+
+.pageItem {
+  cursor: pointer;
+}
+
+.active {
+  cursor: default;
+}
 /*# sourceMappingURL=style.css.map */
