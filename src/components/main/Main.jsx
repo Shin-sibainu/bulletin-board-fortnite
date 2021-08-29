@@ -14,14 +14,20 @@ list.slice(0, 2).map((list) => console.log(list)); */
 const threadItemNumberPerPage = 3;
 
 export const Main = () => {
-  const [threadReplyList, setReplyList] = useState([]);
+  const [replyList, setReplyList] = useState([]);
   let testThreadList = [
     {
+      id: 1,
       name: "うんこ1",
       title: "うんこだな1ｗ",
       comment: "これはテストだよ",
-      replyList: threadReplyList,
     },
+    {
+      id: 2,
+      name: "うんこ2",
+      title: "うんこだな2ｗ",
+      comment: "これはテストだよ",
+    }
   ];
   const [threadList, setThreadList] = useState(testThreadList);
 
@@ -47,6 +53,7 @@ export const Main = () => {
         threadList={threadList}
         offset={pagenateInfoList.offset}
         perPage={pagenateInfoList.perPage}
+        replyList={replyList}
         setReplyList={setReplyList}
       />
       {/* paginateゾーン */}

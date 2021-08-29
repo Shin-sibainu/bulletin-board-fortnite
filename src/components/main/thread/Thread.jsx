@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-export const Thread = ({ thread, index, setReplyList }) => {
+
+export const Thread = ({ thread, index, setReplyList, replyList }) => {
   const [inputName, setInputName] = useState("");
   const [inputTextArea, setInputTextArea] = useState("");
-  // const [replyList, setReplyList] = useState([]);
 
   const handleChange = (e) => {
     setInputName(e.target.value);
@@ -25,19 +25,15 @@ export const Thread = ({ thread, index, setReplyList }) => {
     if (formVailed()) {
       /* データベースに入力したデータを送る */
       console.log("submit");
-      /* スレ下に返信コメントを追加 */
-      /*       setReplyList([
-        ...replyList,
-        { name: inputName, replyComment: inputTextArea },
-      ]); */
       setReplyList([
-        ...thread.replyList,
+        ...replyList,
         {
+          id: replyList + 1,
           name: inputName,
           replyComment: inputTextArea,
         },
       ]);
-      console.log(...thread.replyList);
+      console.log(replyList);        
       setInputName("");
       setInputTextArea("");
     }
@@ -61,7 +57,7 @@ export const Thread = ({ thread, index, setReplyList }) => {
           <span id="threadContent">{thread.comment}</span>
         </p>
         {/* ここから返信コメントを複数生成 */}
-        {thread.replyList.map((reply, index) => (
+        {thread.id === 1 && replyList.map((reply, index) => (
           <div key={index}>
             <p id="username">
               No.{index + 2} 名前: <b> {reply.name}</b>
