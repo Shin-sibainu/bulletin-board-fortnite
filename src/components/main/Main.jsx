@@ -6,18 +6,22 @@ import { useState } from "react";
 import ReactPaginate from "react-paginate";
 // import { Paginate } from "./paginate/Paginate";
 
+//sliceの練習。
+/* const list = ["0", "1", "2", "3"];
+console.log(list);
+list.slice(0, 2).map((list) => console.log(list)); */
+
 const threadItemNumberPerPage = 3;
 
 export const Main = () => {
+  const [threadReplyList, setReplyList] = useState([]);
   let testThreadList = [
-    { name: "うんこ1", title: "うんこだなｗ", comment: "これはテストだよ" },
-    { name: "うんこ2", title: "うんこだなｗ", comment: "これはテストだよ" },
-    { name: "うんこ3", title: "うんこだなｗ", comment: "これはテストだよ" },
-    { name: "うんこ4", title: "うんこだなｗ", comment: "これはテストだよ" },
-    { name: "うんこ5", title: "うんこだなｗ", comment: "これはテストだよ" },
-    { name: "うんこ6", title: "うんこだなｗ", comment: "これはテストだよ" },
-    { name: "うんこ7", title: "うんこだなｗ", comment: "これはテストだよ" },
-    { name: "うんこ8", title: "うんこだなｗ", comment: "これはテストだよ" },
+    {
+      name: "うんこ1",
+      title: "うんこだな1ｗ",
+      comment: "これはテストだよ",
+      replyList: threadReplyList,
+    },
   ];
   const [threadList, setThreadList] = useState(testThreadList);
 
@@ -32,6 +36,7 @@ export const Main = () => {
       offset: pageNumber * threadItemNumberPerPage, //ここが３になるはず。
       perPage: threadItemNumberPerPage,
     }); //始まりの位置が変更されるだけ
+    //pageのトップに移動する。
   };
   /* ここまでpaginate関係 */
 
@@ -42,6 +47,7 @@ export const Main = () => {
         threadList={threadList}
         offset={pagenateInfoList.offset}
         perPage={pagenateInfoList.perPage}
+        setReplyList={setReplyList}
       />
       {/* paginateゾーン */}
       <ReactPaginate

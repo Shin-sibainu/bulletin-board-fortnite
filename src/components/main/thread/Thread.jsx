@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-export const Thread = ({ thread, index }) => {
+export const Thread = ({ thread, index, setReplyList }) => {
   const [inputName, setInputName] = useState("");
   const [inputTextArea, setInputTextArea] = useState("");
-  const [replyList, setReplyList] = useState([]);
+  // const [replyList, setReplyList] = useState([]);
 
   const handleChange = (e) => {
     setInputName(e.target.value);
@@ -26,10 +26,18 @@ export const Thread = ({ thread, index }) => {
       /* データベースに入力したデータを送る */
       console.log("submit");
       /* スレ下に返信コメントを追加 */
-      setReplyList([
+      /*       setReplyList([
         ...replyList,
         { name: inputName, replyComment: inputTextArea },
+      ]); */
+      setReplyList([
+        ...thread.replyList,
+        {
+          name: inputName,
+          replyComment: inputTextArea,
+        },
       ]);
+      console.log(...thread.replyList);
       setInputName("");
       setInputTextArea("");
     }
@@ -50,10 +58,10 @@ export const Thread = ({ thread, index }) => {
           </span>
         </p>
         <p id="threadContentArea">
-          {/* ここから返信コメントを複数生成 */}
           <span id="threadContent">{thread.comment}</span>
         </p>
-        {replyList.map((reply, index) => (
+        {/* ここから返信コメントを複数生成 */}
+        {thread.replyList.map((reply, index) => (
           <div key={index}>
             <p id="username">
               No.{index + 2} 名前: <b> {reply.name}</b>
@@ -63,13 +71,12 @@ export const Thread = ({ thread, index }) => {
               </span>
             </p>
             <p id="threadContentArea">
-              {/* ここから返信コメントを複数生成 */}
               <span id="threadContent">{reply.replyComment}</span>
             </p>
           </div>
         ))}
       </div>
-      {/* 返信用 */}
+      {/* 返信用フォーム */}
       {/* method="POST"にしないと無理な気がする*/}
       <form onSubmit={handleSubmit}>
         <table className="replyTable">
