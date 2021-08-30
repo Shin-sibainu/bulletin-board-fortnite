@@ -14,13 +14,31 @@ list.slice(0, 2).map((list) => console.log(list)); */
 const threadItemNumberPerPage = 3;
 
 export const Main = () => {
-  const [threadReplyList, setReplyList] = useState([]);
+  const [replyList, setReplyList] = useState([]);
   let testThreadList = [
     {
+      id: 1,
       name: "うんこ1",
       title: "うんこだな1ｗ",
       comment: "これはテストだよ",
-      replyList: threadReplyList,
+    },
+    {
+      id: 2,
+      name: "うんこ2",
+      title: "うんこだな2ｗ",
+      comment: "これはテストだよ",
+    },
+    {
+      id: 3,
+      name: "うんこ3",
+      title: "うんこだな3ｗ",
+      comment: "これはテストだよ",
+    },
+    {
+      id: 4,
+      name: "うんこ4",
+      title: "うんこだな4ｗ",
+      comment: "これはテストだよ",
     },
   ];
   const [threadList, setThreadList] = useState(testThreadList);
@@ -30,6 +48,8 @@ export const Main = () => {
     offset: 0, //始まりの位置
     perPage: threadItemNumberPerPage, //１ページに表示するスレッド数
   });
+
+  //offset変えてるだけ。
   const handlePageChange = (data) => {
     let pageNumber = data["selected"]; //2を押したら１が返る。
     setPagenateInforList({
@@ -48,6 +68,7 @@ export const Main = () => {
         offset={pagenateInfoList.offset}
         perPage={pagenateInfoList.perPage}
         setReplyList={setReplyList}
+        replyList={replyList}
       />
       {/* paginateゾーン */}
       <ReactPaginate
